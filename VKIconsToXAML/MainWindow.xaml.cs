@@ -44,6 +44,8 @@ namespace VKIconsToXAML {
             progressBar.Value = 0;
             files.Inlines.Clear();
             Task.Run(() => {
+                string c1 = "";
+                string c2 = "";
                 foreach (string fileName in fileNames) {
                     using (VKIconSVGParser p = new VKIconSVGParser()) {
                         Tuple<bool, string, string> res = p.Parse(fileName);
@@ -55,18 +57,20 @@ namespace VKIconsToXAML {
                             });
                             files.Inlines.Add(new LineBreak());
 
-                            code.Text += res.Item2 + "\n";
-                            code2.Text += res.Item3 + "\n";
+                            c1 += res.Item2 + "\n";
+                            c2 += res.Item3 + "\n";
                             progressBar.Value++;
-                            if(progressBar.Value == fileNames.Length) {
+                            code.Text = $"{progressBar.Value} из {fileNames.Length} были прочитаны";
+                            if (progressBar.Value == fileNames.Length) {
                                 progressBar.Visibility = Visibility.Collapsed;
                                 fileButton.Visibility = Visibility.Visible;
+                                code.Text = "<!-- Данный код надо добавить в ResourceDictionary -->\n" + c1;
+                                code2.Text = "<!-- Пример использования иконок -->\n" + c2;
                             }
                         });
                     }
                 }
             });
-            
         }
     }
 }

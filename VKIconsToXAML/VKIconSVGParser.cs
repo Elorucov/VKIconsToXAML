@@ -61,8 +61,8 @@ namespace VKIconsToXAML {
             //xaml += $"чтобы узнать подробности о подключении иконок. -->\n";
             //xaml += $"\n";
             xaml += $"<DataTemplate x:Key=\"{name}\">\n";
-            xaml += $"    <Viewbox Stretch=\"Uniform\" HorizontalAlignment=\"Center\" VerticalAlignment=\"Center\">\n";
-            xaml += $"        <PathIcon Width=\"{w}\" Height=\"{h}\" Data=\"{data}\"/>\n";
+            xaml += $"    <Viewbox Stretch=\"Uniform\">\n";
+            xaml += $"        <PathIcon HorizontalAlignment=\"Center\" VerticalAlignment=\"Center\" Width=\"{w}\" Height=\"{h}\" Data=\"{data}\"/>\n";
             xaml += $"    </Viewbox>\n";
             xaml += $"</DataTemplate>";
 

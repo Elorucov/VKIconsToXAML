@@ -66,7 +66,7 @@ namespace VKIconsToXAML {
             xaml += $"    </Viewbox>\n";
             xaml += $"</DataTemplate>";
 
-            string xaml2 = $"<ContentPresenter Foreground=\"Blue\" Width=\"{h}\" Height=\"{h}\" ContentTemplate=\"{{StaticResource {name}}}\"/>";
+            string xaml2 = $"{name},";
 
             return new Tuple<string, string>(xaml, xaml2);
         }

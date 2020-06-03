@@ -45,7 +45,7 @@ namespace VKIconsToXAML {
             files.Inlines.Clear();
             Task.Run(() => {
                 string c1 = "";
-                string c2 = "";
+                string c2 = "public enum VKIcon {\n";
                 foreach (string fileName in fileNames) {
                     using (VKIconSVGParser p = new VKIconSVGParser()) {
                         Tuple<bool, string, string> res = p.Parse(fileName);
@@ -65,7 +65,7 @@ namespace VKIconsToXAML {
                                 progressBar.Visibility = Visibility.Collapsed;
                                 fileButton.Visibility = Visibility.Visible;
                                 code.Text = "<!-- Данный код надо добавить в ResourceDictionary -->\n" + c1;
-                                code2.Text = "<!-- Пример использования иконок -->\n" + c2;
+                                code2.Text = "<!-- Enum -->\n" + c2 + "}";
                             }
                         });
                     }
